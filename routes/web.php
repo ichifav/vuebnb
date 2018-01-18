@@ -1,5 +1,7 @@
 <?php
 
+use App\Listing;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::resource('listings', 'ListingController')
+    ->only(['show']);

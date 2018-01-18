@@ -1,24 +1,21 @@
 import Vue from 'vue'
-import sample from './data'
+import { populateAmenitiesAndPrices } from './helpers'
+
+let model = JSON.parse(window.vuebnb_listing_model)
+model = populateAmenitiesAndPrices(model)
 
 const app = new Vue({
     el: '#app',
 
-    data: {
-        title: sample.title,
-        address: sample.address,
-        about: sample.about,
-
-        amenities: sample.amenities,
-        prices: sample.prices,
-
+    data: Object.assign(model, {
         contracted: true,
+
         modalOpen: false,
 
         headerImageStyle: {
-            'background-image': 'url(/images/header.jpg)',
-        },
-    },
+            'background-image': `url(${model.images[0]})`,
+        }
+    }),
 
     watch: {
         modalOpen() {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Listing;
 use Illuminate\Http\Request;
 
-class ListingController extends Controller
+class ListingApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,7 +50,7 @@ class ListingController extends Controller
             $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
         }
 
-        return view('app', ['model' => $listing]);
+        return $listing;
     }
 
     /**

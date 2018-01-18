@@ -68,11 +68,14 @@
                     &times;
                 </button>
                 <div class="modal-content">
-                    <img src="{{ asset('images/header.jpg') }}"/>
+                    <img :src="images[0]"/>
                 </div>
             </div>
         </div>
 
+        <script type="text/javascript">
+         window.vuebnb_listing_model = '{!! addslashes(json_encode($model)) !!}'
+        </script>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -14,5 +14,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('listings', 'ListingController')
+Route::resource('listings', 'ListingApiController')
     ->only(['show']);
