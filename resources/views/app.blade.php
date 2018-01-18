@@ -18,7 +18,7 @@
 
         <div id="app">
             <div class="header">
-                <div class="header-img" :style='headerImageStyle' @click="modalOpen = true">
+                <div class="header-img" :style='headerImageStyle' @click="openModal">
                     <button class="view-photos">View Photos</button>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <modal-window-component :modal-open.sync="modalOpen">
+            <modal-window-component ref="imagemodal">
                 <image-carousel-component :images='images'></image-carousel-component>
             </modal-window-component>
         </div>

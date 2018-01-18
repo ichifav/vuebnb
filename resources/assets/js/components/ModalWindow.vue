@@ -9,8 +9,10 @@
 
 <script>
  export default {
-     props: {
-         modalOpen: Boolean
+     data() {
+         return {
+             modalOpen: false
+         }
      },
 
      watch: {
@@ -26,8 +28,12 @@
      },
 
      methods: {
+         openModal() {
+             this.modalOpen = true
+         },
+
          closeModal() {
-             this.$emit('update:modalOpen', false)
+             this.modalOpen = false
          },
 
          escapeKeyListener(event) {

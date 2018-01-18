@@ -15,10 +15,14 @@ const app = new Vue({
     data: Object.assign(model, {
         contracted: true,
 
-        modalOpen: false,
-
         headerImageStyle: {
             'background-image': `url(${model.images[0]})`,
         }
     }),
+
+    methods: {
+        openModal() {
+            this.$refs.imagemodal.openModal()
+        }
+    },
 })

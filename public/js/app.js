@@ -232,12 +232,16 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     data: Object.assign(model, {
         contracted: true,
 
-        modalOpen: false,
-
         headerImageStyle: {
             'background-image': 'url(' + model.images[0] + ')'
         }
-    })
+    }),
+
+    methods: {
+        openModal: function openModal() {
+            this.$refs.imagemodal.openModal();
+        }
+    }
 });
 
 /***/ }),
@@ -11903,9 +11907,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        modalOpen: Boolean
+    data: function data() {
+        return {
+            modalOpen: false
+        };
     },
+
 
     watch: {
         modalOpen: function modalOpen() {
@@ -11920,8 +11927,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        openModal: function openModal() {
+            this.modalOpen = true;
+        },
         closeModal: function closeModal() {
-            this.$emit('update:modalOpen', false);
+            this.modalOpen = false;
         },
         escapeKeyListener: function escapeKeyListener(event) {
             if (event.keyCode === 27 && this.modalOpen) {
