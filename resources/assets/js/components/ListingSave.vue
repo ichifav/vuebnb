@@ -37,7 +37,6 @@
      },
 
      methods: {
-
          toggleSaved() {
              this.$store.commit('toggleSaved', this.id)
          }

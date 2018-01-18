@@ -10,27 +10,17 @@
 
 <script>
  import { groupByCountry } from '../helpers'
- import routeMixin from '../route-mixin.js'
- import axios from 'axios'
 
  export default {
-     mixins: [routeMixin],
-
      components: {
          ListingSummaryGroupComponent: require('./ListingSummaryGroup')
      },
 
-     data() {
-         return {
-             listing_groups: []
+     computed: {
+         listing_groups() {
+             return groupByCountry(this.$store.state.listing_summaries)
          }
      },
-
-     methods: {
-         assignData(data) {
-             this.listing_groups = groupByCountry(data.listings)
-         }
-     }
  }
 </script>
 

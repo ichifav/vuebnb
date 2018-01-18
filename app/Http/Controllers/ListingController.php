@@ -112,7 +112,7 @@ class ListingController extends Controller
             $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
         }
 
-        return collect(['listings' => $listing]);
+        return collect(['listing' => $listing]);
     }
 
     private function add_meta_data($collection, $request)

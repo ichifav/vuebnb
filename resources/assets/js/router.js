@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
-export default new VueRouter({
+import axios from 'axios'
+import store from './store'
+
+const router = new VueRouter({
     mode: 'history',
 
     scrollBehavior(to, from, savedPosition) {
@@ -24,3 +26,11 @@ export default new VueRouter({
         },
     ],
 })
+
+router.beforeEach(async (to, from, next) => {
+    const { data } = await axios.get(`/api${to.path}`)
+    store.commit('addData', { route: to.name, data })
+    next()
+})
+
+export default router

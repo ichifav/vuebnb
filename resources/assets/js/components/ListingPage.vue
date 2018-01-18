@@ -1,33 +1,33 @@
 <template>
     <div>
-        <header-image-component v-if="images[0]"
-                                :id="id"
-                                :image-url="images[0]"
+        <header-image-component v-if="listing.images[0]"
+                                :id="listing.id"
+                                :image-url="listing.images[0]"
                                 @header-clicked="openModal">
         </header-image-component>
 
         <div class="container">
             <div class="heading">
-                <h1>{{ title }}</h1>
-                <p>{{ address }}</p>
+                <h1>{{ listing.title }}</h1>
+                <p>{{ listing.address }}</p>
             </div>
 
             <hr>
 
             <div class="about">
                 <h3>About this listing</h3>
-                <expendable-text-component>{{ about }}</expendable-text-component>
+                <expendable-text-component>{{ listing.about }}</expendable-text-component>
             </div>
 
             <div class="lists">
-                <feature-list-component title="Amenities" :items="amenities">
+                <feature-list-component title="Amenities" :items="listing.amenities">
                     <template slot-scope="amenity">
                         <i class="fa fa-lg" :class="amenity.icon"></i>
                         <span>{{ amenity.title }}</span>
                     </template>
                 </feature-list-component>
 
-                <feature-list-component title="Prices" :items="prices">
+                <feature-list-component title="Prices" :items="listing.prices">
                     <template slot-scope="price">
                         {{ price.title }}: <strong>{{ price.value }}</strong>
                     </template>
@@ -36,18 +36,15 @@
         </div>
 
         <modal-window-component ref="imagemodal">
-            <image-carousel-component :images='images'></image-carousel-component>
+            <image-carousel-component :images='listing.images'></image-carousel-component>
         </modal-window-component>
     </div>
 </template>
 
 <script>
  import { populateAmenitiesAndPrices } from '../helpers.js'
- import routeMixin from '../route-mixin.js'
 
  export default {
-     mixins: [routeMixin],
-
      components: {
          HeaderImageComponent: require('./HeaderImage'),
          ExpendableTextComponent: require('./ExpandableText'),
@@ -56,23 +53,17 @@
          ModalWindowComponent: require('./ModalWindow'),
      },
 
-     data() {
-         return {
-             id: null,
-             title: null,
-             about: null,
-             address: null,
-             amenities: [],
-             prices: [],
-             images: []
+     computed: {
+         listing() {
+             const listing = this.$store.state.listings.find(
+                 listing => listing.id == this.$route.params.listing
+             )
+
+             return populateAmenitiesAndPrices(listing)
          }
      },
 
      methods: {
-         assignData(data) {
-             Object.assign(this.$data, populateAmenitiesAndPrices(data.listings))
-         },
-
          openModal() {
              this.$refs.imagemodal.openModal()
          }

@@ -8936,104 +8936,7 @@ var groupByCountry = function groupByCountry(listings) {
 
 
 /***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-
-
-var getData = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2(to) {
-        var _this = this;
-
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-            while (1) {
-                switch (_context2.prev = _context2.next) {
-                    case 0:
-                        return _context2.abrupt('return', new Promise(function () {
-                            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(resolve) {
-                                var response;
-                                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                                    while (1) {
-                                        switch (_context.prev = _context.next) {
-                                            case 0:
-                                                _context.next = 2;
-                                                return __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api' + to.path);
-
-                                            case 2:
-                                                response = _context.sent;
-
-                                                resolve(response.data);
-
-                                            case 4:
-                                            case 'end':
-                                                return _context.stop();
-                                        }
-                                    }
-                                }, _callee, _this);
-                            }));
-
-                            return function (_x2) {
-                                return _ref2.apply(this, arguments);
-                            };
-                        }()));
-
-                    case 1:
-                    case 'end':
-                        return _context2.stop();
-                }
-            }
-        }, _callee2, this);
-    }));
-
-    return function getData(_x) {
-        return _ref.apply(this, arguments);
-    };
-}();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    beforeRouteEnter: function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3(to, from, next) {
-            var data;
-            return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
-                while (1) {
-                    switch (_context3.prev = _context3.next) {
-                        case 0:
-                            _context3.next = 2;
-                            return getData(to);
-
-                        case 2:
-                            data = _context3.sent;
-
-                            next(function (component) {
-                                return component.assignData(data);
-                            });
-
-                        case 4:
-                        case 'end':
-                            return _context3.stop();
-                    }
-                }
-            }, _callee3, this);
-        }));
-
-        function beforeRouteEnter(_x3, _x4, _x5) {
-            return _ref3.apply(this, arguments);
-        }
-
-        return beforeRouteEnter;
-    }()
-});
-
-/***/ }),
+/* 19 */,
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10077,14 +9980,27 @@ exports.clearImmediate = clearImmediate;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(140);
+
+
+var _this = this;
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
+
+
+
+var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     mode: 'history',
 
     scrollBehavior: function scrollBehavior(to, from, savedPosition) {
@@ -10101,7 +10017,40 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         component: __webpack_require__(94),
         name: 'listing'
     }]
-}));
+});
+
+router.beforeEach(function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to, from, next) {
+        var _ref2, data;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.next = 2;
+                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api' + to.path);
+
+                    case 2:
+                        _ref2 = _context.sent;
+                        data = _ref2.data;
+
+                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('addData', { route: to.name, data: data });
+                        next();
+
+                    case 6:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, _this);
+    }));
+
+    return function (_x, _x2, _x3) {
+        return _ref.apply(this, arguments);
+    };
+}());
+
+/* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
 /* 57 */
@@ -12797,9 +12746,6 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__route_mixin_js__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 //
 //
 //
@@ -12810,28 +12756,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_1__route_mixin_js__["a" /* default */]],
-
     components: {
         ListingSummaryGroupComponent: __webpack_require__(82)
     },
 
-    data: function data() {
-        return {
-            listing_groups: []
-        };
-    },
-
-
-    methods: {
-        assignData: function assignData(data) {
-            this.listing_groups = Object(__WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* groupByCountry */])(data.listings);
+    computed: {
+        listing_groups: function listing_groups() {
+            return Object(__WEBPACK_IMPORTED_MODULE_0__helpers__["a" /* groupByCountry */])(this.$store.state.listing_summaries);
         }
     }
 });
@@ -14984,7 +14919,6 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__route_mixin_js__ = __webpack_require__(19);
 //
 //
 //
@@ -15028,13 +14962,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_1__route_mixin_js__["a" /* default */]],
-
     components: {
         HeaderImageComponent: __webpack_require__(97),
         ExpendableTextComponent: __webpack_require__(101),
@@ -15043,23 +14974,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         ModalWindowComponent: __webpack_require__(113)
     },
 
-    data: function data() {
-        return {
-            id: null,
-            title: null,
-            about: null,
-            address: null,
-            amenities: [],
-            prices: [],
-            images: []
-        };
+    computed: {
+        listing: function listing() {
+            var _this = this;
+
+            var listing = this.$store.state.listings.find(function (listing) {
+                return listing.id == _this.$route.params.listing;
+            });
+
+            return Object(__WEBPACK_IMPORTED_MODULE_0__helpers_js__["b" /* populateAmenitiesAndPrices */])(listing);
+        }
     },
 
-
     methods: {
-        assignData: function assignData(data) {
-            Object.assign(this.$data, Object(__WEBPACK_IMPORTED_MODULE_0__helpers_js__["b" /* populateAmenitiesAndPrices */])(data.listings));
-        },
         openModal: function openModal() {
             this.$refs.imagemodal.openModal();
         }
@@ -15737,18 +15664,18 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm.images[0]
+      _vm.listing.images[0]
         ? _c("header-image-component", {
-            attrs: { id: _vm.id, "image-url": _vm.images[0] },
+            attrs: { id: _vm.listing.id, "image-url": _vm.listing.images[0] },
             on: { "header-clicked": _vm.openModal }
           })
         : _vm._e(),
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "heading" }, [
-          _c("h1", [_vm._v(_vm._s(_vm.title))]),
+          _c("h1", [_vm._v(_vm._s(_vm.listing.title))]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.address))])
+          _c("p", [_vm._v(_vm._s(_vm.listing.address))])
         ]),
         _vm._v(" "),
         _c("hr"),
@@ -15759,7 +15686,7 @@ var render = function() {
           [
             _c("h3", [_vm._v("About this listing")]),
             _vm._v(" "),
-            _c("expendable-text-component", [_vm._v(_vm._s(_vm.about))])
+            _c("expendable-text-component", [_vm._v(_vm._s(_vm.listing.about))])
           ],
           1
         ),
@@ -15769,7 +15696,7 @@ var render = function() {
           { staticClass: "lists" },
           [
             _c("feature-list-component", {
-              attrs: { title: "Amenities", items: _vm.amenities },
+              attrs: { title: "Amenities", items: _vm.listing.amenities },
               scopedSlots: _vm._u([
                 {
                   key: "default",
@@ -15785,7 +15712,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("feature-list-component", {
-              attrs: { title: "Prices", items: _vm.prices },
+              attrs: { title: "Prices", items: _vm.listing.prices },
               scopedSlots: _vm._u([
                 {
                   key: "default",
@@ -15808,7 +15735,11 @@ var render = function() {
       _c(
         "modal-window-component",
         { ref: "imagemodal" },
-        [_c("image-carousel-component", { attrs: { images: _vm.images } })],
+        [
+          _c("image-carousel-component", {
+            attrs: { images: _vm.listing.images }
+          })
+        ],
         1
       )
     ],
@@ -16083,7 +16014,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     state: {
-        saved: []
+        saved: [],
+
+        listing_summaries: [],
+
+        listings: []
     },
 
     mutations: {
@@ -16096,6 +16031,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 state.saved.push(id);
             } else {
                 state.saved.splice(index, 1);
+            }
+        },
+        addData: function addData(state, _ref) {
+            var route = _ref.route,
+                data = _ref.data;
+
+            if (route === 'listing') {
+                state.listings.push(data.listing);
+            } else {
+                state.listing_summaries = data.listings;
             }
         }
     }
