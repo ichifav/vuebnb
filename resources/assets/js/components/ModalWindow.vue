@@ -61,7 +61,8 @@
      right: 0;
      bottom: 0;
      left: 0;
-     z-index: 2000; background-color: rgba(0,0,0,0.85);
+     z-index: 2000;
+     background-color: rgba(0,0,0,0.85);
  }
 
  #modal.show {
@@ -74,11 +75,6 @@
      padding-top: 12vh;
      margin: 0 auto;
      position: relative;
- }
-
- body.modal-open {
-     overflow: hidden;
-     position: fixed;
  }
 
  .modal-close {
