@@ -1,6 +1,9 @@
 <template>
     <div>
-        <header-image-component v-if="images[0]" :image-url="images[0]" @header-clicked="openModal">
+        <header-image-component v-if="images[0]"
+                                :id="id"
+                                :image-url="images[0]"
+                                @header-clicked="openModal">
         </header-image-component>
 
         <div class="container">
@@ -55,6 +58,7 @@
 
      data() {
          return {
+             id: null,
              title: null,
              about: null,
              address: null,

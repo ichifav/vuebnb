@@ -15025,6 +15025,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -15042,6 +15045,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
+            id: null,
             title: null,
             about: null,
             address: null,
@@ -15133,9 +15137,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['image-url'],
+    components: {
+        ListingSaveComponent: __webpack_require__(142)
+    },
+
+    props: ['image-url', 'id'],
 
     computed: {
         headerImageStyle: function headerImageStyle() {
@@ -15166,7 +15175,12 @@ var render = function() {
           }
         }
       },
-      [_c("button", { staticClass: "view-photos" }, [_vm._v("View Photos")])]
+      [
+        _c("listing-save-component", { attrs: { id: _vm.id } }),
+        _vm._v(" "),
+        _c("button", { staticClass: "view-photos" }, [_vm._v("View Photos")])
+      ],
+      1
     )
   ])
 }
@@ -15725,7 +15739,7 @@ var render = function() {
     [
       _vm.images[0]
         ? _c("header-image-component", {
-            attrs: { "image-url": _vm.images[0] },
+            attrs: { id: _vm.id, "image-url": _vm.images[0] },
             on: { "header-clicked": _vm.openModal }
           })
         : _vm._e(),
