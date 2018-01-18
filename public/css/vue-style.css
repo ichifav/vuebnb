@@ -107,6 +107,9 @@
     right: 20px;
     cursor: pointer;
 }
+.listing-save .fa-heart[data-v-18c6ed8c] {
+    color: #ff5a5f;
+}
 .listing-save .fa-heart-o[data-v-18c6ed8c] {
     color: #ffffff;
 }

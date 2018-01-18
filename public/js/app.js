@@ -17105,7 +17105,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['id'],
 
+    computed: {
+        classes: function classes() {
+            var saved = this.isSaved();
+
+            return {
+                'fa': true,
+                'fa-lg': true,
+                'fa-heart': saved,
+                'fa-heart-o': !saved
+            };
+        }
+    },
+
     methods: {
+        isSaved: function isSaved() {
+            var _this = this;
+
+            return Boolean(this.$store.state.saved.find(function (saved) {
+                return saved === _this.id;
+            }));
+        },
         toggleSaved: function toggleSaved() {
             this.$store.commit('toggleSaved', this.id);
         }
@@ -17131,7 +17151,7 @@ var render = function() {
         }
       }
     },
-    [_c("i", { staticClass: "fa fa-lg fa-heart-o" })]
+    [_c("i", { class: _vm.classes })]
   )
 }
 var staticRenderFns = []
