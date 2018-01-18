@@ -45,15 +45,13 @@
 
      methods: {
          changeOffset(val) {
-             let newVal = this.offset + parseInt(val)
+             const newVal = this.offset + parseInt(val)
              const max = this.listings.length - rowSize
 
-             if (0 <= newVal && newVal <= max) {
-                 this.offset = newVal
-             } else if (max < newVal) {
-                 this.offset = 0
-             } else {
+             if (newVal < 0) {
                  this.offset = max
+             } else {
+                 this.offset = newVal % max
              }
          }
      },
