@@ -14,6 +14,13 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .webpackConfig({
+        resolve: {
+            alias: {
+                'vue$': 'vue/dist/vue.runtime.esm.js'
+            }
+        }
+    })
     .styles([
         'node_modules/open-sans-all/css/open-sans.css',
         'node_modules/font-awesome/css/font-awesome.css',
