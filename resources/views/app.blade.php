@@ -17,11 +17,8 @@
         </div>
 
         <div id="app">
-            <div class="header">
-                <div class="header-img" :style='headerImageStyle' @click="openModal">
-                    <button class="view-photos">View Photos</button>
-                </div>
-            </div>
+            <header-image-component :image-url="images[0]" @header-clicked="openModal">
+            </header-image-component>
 
             <div class="container">
                 <div class="heading">
@@ -71,6 +68,7 @@
         <script type="text/javascript">
          window.vuebnb_listing_model = '{!! addslashes(json_encode($model)) !!}'
         </script>
+
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -8,16 +8,13 @@ const app = new Vue({
     el: '#app',
 
     components: {
+        HeaderImageComponent: require('./components/HeaderImage'),
         ImageCarouselComponent: require('./components/ImageCarousel'),
         ModalWindowComponent: require('./components/ModalWindow'),
     },
 
     data: Object.assign(model, {
         contracted: true,
-
-        headerImageStyle: {
-            'background-image': `url(${model.images[0]})`,
-        }
     }),
 
     methods: {
