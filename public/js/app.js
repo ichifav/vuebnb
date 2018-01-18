@@ -10021,23 +10021,33 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
 
 router.beforeEach(function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to, from, next) {
-        var _ref2, data;
+        var isStored, _ref2, data;
 
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        _context.next = 2;
+                        isStored = to.name === 'listing' ? Boolean(__WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].getters.getListing(to.params.listing)) : __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].state.listing_summaries.length > 0;
+
+                        if (isStored) {
+                            _context.next = 7;
+                            break;
+                        }
+
+                        _context.next = 4;
                         return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api' + to.path);
 
-                    case 2:
+                    case 4:
                         _ref2 = _context.sent;
                         data = _ref2.data;
 
                         __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('addData', { route: to.name, data: data });
+
+                    case 7:
+
                         next();
 
-                    case 6:
+                    case 8:
                     case 'end':
                         return _context.stop();
                 }
