@@ -1,0 +1,74 @@
+
+.image-carousel[data-v-517fb5b4] {
+    height: 100%;
+    margin-top: -12vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-carousel img[data-v-517fb5b4] {
+    width: 100%;
+}
+.image-carousel .controls[data-v-517fb5b4] {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel-control[data-v-5e112476] {
+    padding: 1rem;
+    color: #ffffff;
+    opacity: 0.85;
+}
+@media (min-width: 744px) {
+.carousel-control[data-v-5e112476] {
+        font-size: 3rem;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

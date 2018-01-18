@@ -7,6 +7,11 @@ model = populateAmenitiesAndPrices(model)
 const app = new Vue({
     el: '#app',
 
+    components: {
+        ImageCarouselComponent: require('./components/ImageCarousel'),
+        ModalWindowComponent: require('./components/ModalWindow'),
+    },
+
     data: Object.assign(model, {
         contracted: true,
 
@@ -16,32 +21,4 @@ const app = new Vue({
             'background-image': `url(${model.images[0]})`,
         }
     }),
-
-    watch: {
-        modalOpen() {
-            let className = 'modal-open'
-
-            if (this.modalOpen) {
-                document.body.classList.add(className)
-            } else {
-                document.body.classList.remove(className)
-            }
-        }
-    },
-
-    methods: {
-        escapeKeyListener(event) {
-            if (event.keyCode === 27 && app.modalOpen) {
-                app.modalOpen = false
-            }
-        },
-    },
-
-    created() {
-        document.addEventListener('keyup', this.escapeKeyListener)
-    },
-
-    destroyed() {
-        document.removeEventListner('keyup', this.escapeKeyListener)
-    }
 })

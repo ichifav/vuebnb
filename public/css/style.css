@@ -2630,10 +2630,6 @@ button {
   position: relative;
 }
 
-.modal-content img {
-  max-width: 100%;
-}
-
 body.modal-open {
   overflow: hidden;
   position: fixed;

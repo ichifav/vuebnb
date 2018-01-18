@@ -8,6 +8,7 @@
         <link rel='stylesheet' href='node_modules/open-sans-all/css/open-sans.css'>
         <link rel='stylesheet' href='node_modules/font-awesome/css/font-awesome.css'>
         <link rel='stylesheet' href='{{ asset('css/style.css') }}' type='text/css'>
+        <link rel='stylesheet' href='{{ asset('css/vue-style.css') }}' type='text/css'>
     </head>
     <body>
         <div id="toolbar">
@@ -42,8 +43,7 @@
                         <div class="title">
                             <strong>Amenities</strong>
                         </div>
-                        <div :class="{ contracted: contracted }">
-                            <div class="list-item" v-for="amenity in amenities">
+                        <div :class="{ contracted: contracted }"> <div class="list-item" v-for="amenity in amenities">
                                 <i class="fa fa-lg" :class="amenity.icon"></i>
                                 <span>@{{ amenity.title }}</span>
                             </div>
@@ -67,9 +67,9 @@
                 <button @click="modalOpen = false" class="modal-close">
                     &times;
                 </button>
-                <div class="modal-content">
-                    <img :src="images[0]"/>
-                </div>
+                <modal-window-component :modal-open.sync="modalOpen">
+                    <image-carousel-component :images='images'></image-carousel-component>
+                </modal-window-component>
             </div>
         </div>
 
