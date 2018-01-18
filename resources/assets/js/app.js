@@ -9,13 +9,14 @@ const app = new Vue({
 
     components: {
         HeaderImageComponent: require('./components/HeaderImage'),
+        ExpendableTextComponent: require('./components/ExpandableText'),
         FeatureListComponent: require('./components/FeatureList'),
         ImageCarouselComponent: require('./components/ImageCarousel'),
         ModalWindowComponent: require('./components/ModalWindow'),
     },
 
     data: Object.assign(model, {
-        contracted: true,
+
     }),
 
     methods: {

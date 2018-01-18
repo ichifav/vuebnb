@@ -30,8 +30,7 @@
 
                 <div class="about">
                     <h3>About this listing</h3>
-                    <p class="contracted">@{{ about }}</p>
-                    <button class="more" v-if="contracted" @click="contracted = false">+ More</button>
+                    <expendable-text-component>@{{ about }}</expendable-text-component>
                 </div>
 
                 <div class="lists">
