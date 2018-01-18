@@ -16,43 +16,7 @@
             <h1>vuebnb</h1>
         </div>
 
-        <div id="app">
-            <header-image-component :image-url="images[0]" @header-clicked="openModal">
-            </header-image-component>
-
-            <div class="container">
-                <div class="heading">
-                    <h1>@{{ title }}</h1>
-                    <p>@{{ address }}</p>
-                </div>
-
-                <hr>
-
-                <div class="about">
-                    <h3>About this listing</h3>
-                    <expendable-text-component>@{{ about }}</expendable-text-component>
-                </div>
-
-                <div class="lists">
-                    <feature-list-component title="Amenities" :items="amenities">
-                        <template slot-scope="amenity">
-                            <i class="fa fa-lg" :class="amenity.icon"></i>
-                            <span>@{{ amenity.title }}</span>
-                        </template>
-                    </feature-list-component>
-
-                    <feature-list-component title="Prices" :items="prices">
-                        <template slot-scope="price">
-                            @{{ price.title }}: <strong>@{{ price.value }}</strong>
-                        </template>
-                    </feature-list-component>
-                </div>
-            </div>
-
-            <modal-window-component ref="imagemodal">
-                <image-carousel-component :images='images'></image-carousel-component>
-            </modal-window-component>
-        </div>
+        <div id="app"></div>
 
         <script type="text/javascript">
          window.vuebnb_listing_model = '{!! addslashes(json_encode($model)) !!}'

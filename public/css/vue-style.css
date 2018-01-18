@@ -1,4 +1,22 @@
 
+.heading[data-v-bb3f5d68] {
+    margin-bottom: 2em;
+}
+.heading h1[data-v-bb3f5d68] {
+    font-size: 32px;
+    font-weight: 700;
+}
+.heading p[data-v-bb3f5d68] {
+    font-size: 15px;
+    color: #767676;
+}
+.about[data-v-bb3f5d68] {
+    margin: 2em 0;
+}
+.about h3[data-v-bb3f5d68] {
+    font-size: 22px;
+}
+
 .header[data-v-553ac367] {
     height: 320px;
 }
