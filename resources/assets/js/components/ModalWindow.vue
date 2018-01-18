@@ -48,7 +48,7 @@
      },
 
      destroyed() {
-         document.removeEventListner('keyup', this.escapeKeyListener)
+         document.removeEventListener('keyup', this.escapeKeyListener)
      },
  }
 </script>

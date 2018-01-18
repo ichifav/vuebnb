@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ListingApiController extends Controller
 {
+    public function home()
+    {
+        return $this->get_listing_summaries();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +55,7 @@ class ListingApiController extends Controller
             $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
         }
 
-        return $listing;
+        return collect(['listings' => $listing]);
     }
 
     /**
@@ -85,5 +90,22 @@ class ListingApiController extends Controller
     public function destroy(Listing $listing)
     {
         //
+    }
+
+
+    private function get_listing_summaries()
+    {
+        $collection = Listing::all([
+            'id',
+            'address',
+            'title',
+            'price_per_night',
+        ])
+        ->transform(function ($listing) {
+            $listing->thumb = asset("images/{$listing->id}/Image_1_thumb.jpg");
+            return $listing;
+        });
+
+        return collect(['listings' => $collection]);
     }
 }

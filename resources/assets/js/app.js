@@ -1,8 +1,11 @@
 import 'core-js/fn/object/assign'
 import Vue from 'vue'
+import router from './router'
 
 const app = new Vue({
     el: '#app',
 
-    render: h => h(require('./components/ListingPage')),
+    router,
+
+    render: h => h(require('./components/App')),
 })

@@ -7,6 +7,25 @@ use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
+    public function home()
+    {
+        $data = Listing::all([
+            'id',
+            'address',
+            'title',
+            'price_per_night',
+        ])
+        ->transform(function ($listing) {
+            $listing->thumb = asset("images/{$listing->id}/Image_1_thumb.jpg");
+            return $listing;
+        });
+
+        $data = collect(['listings' => $data]);
+        $data = $this->add_meta_data($data, request());
+
+        return view('app');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,11 +65,11 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
-        foreach (range(1,4) as $i) {
-            $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
-        }
+        $data = $this->get_listing($listing);
 
-        return view('app', ['model' => $listing]);
+        $data = $this->add_meta_data($data, request());
+
+        return view('app');
     }
 
     /**
@@ -85,5 +104,21 @@ class ListingController extends Controller
     public function destroy(Listing $listing)
     {
         //
+    }
+
+    private function get_listing($listing)
+    {
+        foreach (range(1,4) as $i) {
+            $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
+        }
+
+        return collect(['listings' => $listing]);
+    }
+
+    private function add_meta_data($collection, $request)
+    {
+        return $collection->merge([
+            'path' => $request->getPathInfo()
+        ]);
     }
 }

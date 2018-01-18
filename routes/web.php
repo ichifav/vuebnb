@@ -13,5 +13,7 @@ use App\Listing;
 |
 */
 
+Route::get('/', 'ListingController@home');
+
 Route::resource('listings', 'ListingController')
     ->only(['show']);

@@ -1,35 +1,36 @@
 <template>
     <div>
-        <header-image-component :image-url="images[0]" @header-clicked="openModal">
+        <header-image-component v-if="images[0]" :image-url="images[0]" @header-clicked="openModal">
         </header-image-component>
 
         <div class="container">
             <div class="heading">
-                <h1>@{{ title }}</h1>
-                <p>@{{ address }}</p>
+                <h1>{{ title }}</h1>
+                <p>{{ address }}</p>
             </div>
 
             <hr>
 
             <div class="about">
                 <h3>About this listing</h3>
-                <expendable-text-component>@{{ about }}</expendable-text-component>
+                <expendable-text-component>{{ about }}</expendable-text-component>
             </div>
 
             <div class="lists">
                 <feature-list-component title="Amenities" :items="amenities">
                     <template slot-scope="amenity">
                         <i class="fa fa-lg" :class="amenity.icon"></i>
-                        <span>@{{ amenity.title }}</span>
+                        <span>{{ amenity.title }}</span>
                     </template>
                 </feature-list-component>
 
                 <feature-list-component title="Prices" :items="prices">
                     <template slot-scope="price">
-                        @{{ price.title }}: <strong>@{{ price.value }}</strong>
+                        {{ price.title }}: <strong>{{ price.value }}</strong>
                     </template>
                 </feature-list-component>
-            </div> </div>
+            </div>
+        </div>
 
         <modal-window-component ref="imagemodal">
             <image-carousel-component :images='images'></image-carousel-component>
@@ -39,11 +40,11 @@
 
 <script>
  import { populateAmenitiesAndPrices } from '../helpers.js'
-
- let model = JSON.parse(window.vuebnb_listing_model)
- model = populateAmenitiesAndPrices(model)
+ import routeMixin from '../route-mixin.js'
 
  export default {
+     mixins: [routeMixin],
+
      components: {
          HeaderImageComponent: require('./HeaderImage'),
          ExpendableTextComponent: require('./ExpandableText'),
@@ -53,10 +54,21 @@
      },
 
      data() {
-         return Object.assign(model, {})
+         return {
+             title: null,
+             about: null,
+             address: null,
+             amenities: [],
+             prices: [],
+             images: []
+         }
      },
 
      methods: {
+         assignData(data) {
+             Object.assign(this.$data, populateAmenitiesAndPrices(data.listings))
+         },
+
          openModal() {
              this.$refs.imagemodal.openModal()
          }
@@ -65,6 +77,17 @@
 </script>
 
 <style scoped>
+ .container {
+     margin: 0 auto;
+     padding: 0 12px;
+ }
+
+ @media (min-width: 744px) {
+     .container {
+         width: 696px;
+     }
+ }
+
  .heading {
      margin-bottom: 2em;
  }
