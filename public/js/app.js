@@ -11920,9 +11920,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        closeModal: function closeModal() {
+            this.$emit('update:modalOpen', false);
+        },
         escapeKeyListener: function escapeKeyListener(event) {
-            if (event.keyCode === 27 && app.modalOpen) {
-                this.$emit('update:modalOpen', false);
+            if (event.keyCode === 27 && this.modalOpen) {
+                this.closeModal();
             }
         }
     },
@@ -11946,14 +11949,7 @@ var render = function() {
   return _c("div", { class: { show: _vm.modalOpen }, attrs: { id: "modal" } }, [
     _c(
       "button",
-      {
-        staticClass: "modal-close",
-        on: {
-          click: function(_) {
-            return _vm.$emit("update:modalOpen", false)
-          }
-        }
-      },
+      { staticClass: "modal-close", on: { click: _vm.closeModal } },
       [_vm._v("×")]
     ),
     _vm._v(" "),
