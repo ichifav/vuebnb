@@ -102,16 +102,28 @@
 }
 
 .listing-save[data-v-18c6ed8c] {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+position: absolute;
+top: 20px;
+right: 20px;
+cursor: pointer;
 }
 .listing-save .fa-heart[data-v-18c6ed8c] {
-    color: #ff5a5f;
+color: #ff5a5f;
 }
 .listing-save .fa-heart-o[data-v-18c6ed8c] {
-    color: #ffffff;
+color: #ffffff;
+}
+.listing-save i[data-v-18c6ed8c] {
+padding-right: 4px;
+}
+.listing-save button .fa-heart-o[data-v-18c6ed8c] {
+color: #808080;
+}
+.listing-save i[data-v-18c6ed8c] {
+padding-right: 4px;
+}
+.listing-save button .fa-heart-o[data-v-18c6ed8c] {
+color: #808080;
 }
 
 .carousel-control[data-v-5e112476] {

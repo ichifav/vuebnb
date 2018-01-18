@@ -15176,7 +15176,7 @@ var render = function() {
         }
       },
       [
-        _c("listing-save-component", { attrs: { id: _vm.id } }),
+        _c("listing-save-component", { attrs: { id: _vm.id, button: true } }),
         _vm._v(" "),
         _c("button", { staticClass: "view-photos" }, [_vm._v("View Photos")])
       ],
@@ -17115,13 +17115,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['id'],
+    props: ['id', 'button'],
 
     computed: {
         classes: function classes() {
-            var saved = this.isSaved();
+            var saved = this.isSaved;
 
             return {
                 'fa': true,
@@ -17129,10 +17133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'fa-heart': saved,
                 'fa-heart-o': !saved
             };
-        }
-    },
-
-    methods: {
+        },
         isSaved: function isSaved() {
             var _this = this;
 
@@ -17140,6 +17141,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return saved === _this.id;
             }));
         },
+        message: function message() {
+            return this.isSaved ? 'Saved' : 'Save';
+        }
+    },
+
+    methods: {
         toggleSaved: function toggleSaved() {
             this.$store.commit('toggleSaved', this.id);
         }
@@ -17165,7 +17172,14 @@ var render = function() {
         }
       }
     },
-    [_c("i", { class: _vm.classes })]
+    [
+      _vm.button
+        ? _c("button", [
+            _c("i", { class: _vm.classes }),
+            _vm._v("\n        " + _vm._s(_vm.message) + "\n    ")
+          ])
+        : _c("i", { class: _vm.classes })
+    ]
   )
 }
 var staticRenderFns = []
