@@ -9,6 +9,7 @@ const app = new Vue({
 
     components: {
         HeaderImageComponent: require('./components/HeaderImage'),
+        FeatureListComponent: require('./components/FeatureList'),
         ImageCarouselComponent: require('./components/ImageCarousel'),
         ModalWindowComponent: require('./components/ModalWindow'),
     },

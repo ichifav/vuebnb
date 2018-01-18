@@ -35,28 +35,18 @@
                 </div>
 
                 <div class="lists">
-                    <hr>
-                    <div class="amenities list">
-                        <div class="title">
-                            <strong>Amenities</strong>
+                    <feature-list-component title="Amenities">
+                        <div class="list-item" v-for="amenity in amenities">
+                            <i class="fa fa-lg" :class="amenity.icon"></i>
+                            <span>@{{ amenity.title }}</span>
                         </div>
-                        <div :class="{ contracted: contracted }"> <div class="list-item" v-for="amenity in amenities">
-                                <i class="fa fa-lg" :class="amenity.icon"></i>
-                                <span>@{{ amenity.title }}</span>
-                            </div>
-                        </div>
-                    </div>
+                    </feature-list-component>
 
-                    <div class="prices list">
-                        <div class="title">
-                            <strong>Prices</strong>
+                    <feature-list-component title="Prices">
+                        <div class="list-item" v-for="price in prices">
+                            @{{ price.title }}: <strong>@{{ price.value }}</strong>
                         </div>
-                        <div class="content">
-                            <div class="list-item" v-for="price in prices">
-                                @{{ price.title }}: <strong>@{{ price.value }}</strong>
-                            </div>
-                        </div>
-                    </div>
+                    </feature-list-component>
                 </div>
             </div>
 

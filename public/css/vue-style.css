@@ -29,6 +29,42 @@
     left: 20px;
 }
 
+hr[data-v-0a43a366] {
+    border: 0;
+    border-top: 1px solid #dce0e0;
+}
+.list[data-v-0a43a366] {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 2em 0;
+}
+.list .title[data-v-0a43a366] {
+    flex: 1 1 25%;
+}
+.list .content[data-v-0a43a366] {
+    flex: 1 1 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.list .list-item[data-v-0a43a366] {
+    flex: 0 0 50%;
+    margin-bottom: 16px;
+}
+.list .list-item > i[data-v-0a43a366] {
+    width: 35px;
+}
+@media (max-width: 743px) {
+.list .title[data-v-0a43a366] {
+        flex: 1 1 33%;
+}
+.list .content[data-v-0a43a366] {
+        flex: 1 1 67%;
+}
+.list .list-item[data-v-0a43a366] {
+        flex: 0 0 100%;
+}
+}
+
 .image-carousel[data-v-517fb5b4] {
     height: 100%;
     margin-top: -12vh;
