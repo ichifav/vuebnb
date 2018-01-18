@@ -63,14 +63,9 @@
                 </div>
             </div>
 
-            <div id="modal" :class="{ show: modalOpen }">
-                <button @click="modalOpen = false" class="modal-close">
-                    &times;
-                </button>
-                <modal-window-component :modal-open.sync="modalOpen">
-                    <image-carousel-component :images='images'></image-carousel-component>
-                </modal-window-component>
-            </div>
+            <modal-window-component :modal-open.sync="modalOpen">
+                <image-carousel-component :images='images'></image-carousel-component>
+            </modal-window-component>
         </div>
 
         <script type="text/javascript">
