@@ -61,8 +61,7 @@
      right: 0;
      bottom: 0;
      left: 0;
-     z-index: 2000;
-     background-color: rgba(0,0,0,0.85);
+     z-index: 2000; background-color: rgba(0,0,0,0.85);
  }
 
  #modal.show {
@@ -82,7 +81,6 @@
      position: fixed;
  }
 
-
  .modal-close {
      cursor: pointer;
      position: absolute;
@@ -99,13 +97,5 @@
      z-index: 1000;
      font-weight: 100;
      line-height: 1;
- }
-
- .modal-content {
-     width: 100%;
-     max-width: 105vh;
-     padding-top: 12vh;
-     margin: 0 auto;
-     position: relative;
  }
 </style>
