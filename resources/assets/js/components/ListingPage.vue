@@ -55,10 +55,7 @@
 
      computed: {
          listing() {
-             const listing = this.$store.state.listings.find(
-                 listing => listing.id == this.$route.params.listing
-             )
-
+             const listing = this.$store.getters.getListing(this.$route.params.listing)
              return populateAmenitiesAndPrices(listing)
          }
      },

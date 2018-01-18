@@ -12,6 +12,12 @@ export default new Vuex.Store({
         listings: [],
     },
 
+    getters: {
+        getListing(state) {
+            return id => state.listings.find(listing => id == listing.id)
+        }
+    },
+
     mutations: {
         toggleSaved(state, id) {
             const index = state.saved.findIndex(saved => saved === id)

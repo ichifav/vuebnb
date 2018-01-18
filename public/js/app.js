@@ -14976,12 +14976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         listing: function listing() {
-            var _this = this;
-
-            var listing = this.$store.state.listings.find(function (listing) {
-                return listing.id == _this.$route.params.listing;
-            });
-
+            var listing = this.$store.getters.getListing(this.$route.params.listing);
             return Object(__WEBPACK_IMPORTED_MODULE_0__helpers_js__["b" /* populateAmenitiesAndPrices */])(listing);
         }
     },
@@ -16019,6 +16014,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         listing_summaries: [],
 
         listings: []
+    },
+
+    getters: {
+        getListing: function getListing(state) {
+            return function (id) {
+                return state.listings.find(function (listing) {
+                    return id == listing.id;
+                });
+            };
+        }
     },
 
     mutations: {
