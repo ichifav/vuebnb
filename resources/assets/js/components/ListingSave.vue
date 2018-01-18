@@ -1,5 +1,5 @@
 <template>
-    <div class="listing-save" @click.stop="toggleSaved()">
+    <div class="listing-save" @click.stop="toggleSaved">
         <i class="fa fa-lg fa-heart-o"></i>
     </div>
 </template>
@@ -12,7 +12,7 @@
 
      methods: {
          toggleSaved() {
-             // TODO
+             this.$store.commit('toggleSaved', this.id)
          }
      }
  }

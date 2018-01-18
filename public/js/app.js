@@ -16067,7 +16067,25 @@ if (false) {
 
 __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({}));
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
+    state: {
+        saved: []
+    },
+
+    mutations: {
+        toggleSaved: function toggleSaved(state, id) {
+            var index = state.saved.findIndex(function (saved) {
+                return saved === id;
+            });
+
+            if (index === -1) {
+                state.saved.push(id);
+            } else {
+                state.saved.splice(index, 1);
+            }
+        }
+    }
+}));
 
 /***/ }),
 /* 141 */
@@ -17089,7 +17107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         toggleSaved: function toggleSaved() {
-            // TODO
+            this.$store.commit('toggleSaved', this.id);
         }
     }
 });
@@ -17109,7 +17127,7 @@ var render = function() {
       on: {
         click: function($event) {
           $event.stopPropagation()
-          _vm.toggleSaved()
+          _vm.toggleSaved($event)
         }
       }
     },
