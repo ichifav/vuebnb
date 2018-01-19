@@ -41,10 +41,12 @@ class UsersController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        auth()->login($user, true);
 
         return redirect('/');
     }
