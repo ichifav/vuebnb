@@ -9153,6 +9153,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
 
 
+__WEBPACK_IMPORTED_MODULE_4_axios___default.a.defaults.headers.common = {
+    'X-Request-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': window.csrf_token
+};
+
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
     state: {
         saved: [],

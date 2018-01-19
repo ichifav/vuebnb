@@ -40,7 +40,7 @@ use App\Listing;
 
 Auth::routes();
 
-foreach (['/', '/login', '/listings/{listing}'] as $url) {
+foreach (['/', '/listings/{listing}'] as $url) {
     Route::get($url, function () {
         return view('app');
     });

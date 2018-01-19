@@ -17,12 +17,14 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'ListingApiController@home');
 
-Route::get('/saved', 'ListingApiController@home');
-
 Route::resource('listings', 'ListingApiController')
     ->only(['show']);
 
-Route::get('/users/{user}/saved', 'UsersApiController@saved');
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/saved', 'ListingApiController@home');
 
-Route::post('/users/{user}/saved/{listing}', 'UsersApiController@save');
-Route::delete('/users/{user}/saved/{listing}', 'UsersApiController@unsave');
+    Route::get('/users/{user}/saved', 'UsersApiController@saved');
+
+    Route::post('/users/{user}/saved/{listing}', 'UsersApiController@save');
+    Route::delete('/users/{user}/saved/{listing}', 'UsersApiController@unsave');
+});
