@@ -39,8 +39,18 @@ use App\Listing;
 // });
 
 
-foreach (['/', '/saved', '/listings/{listing}'] as $url) {
+foreach (['/', '/listings/{listing}'] as $url) {
     Route::get($url, function () {
         return view('app');
     });
 }
+
+Route::get('/saved', function () {
+    return view('app');
+})->middleware('auth');
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Auth::routes();
