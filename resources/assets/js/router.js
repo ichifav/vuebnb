@@ -62,18 +62,20 @@ const router = new VueRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-    const isStored = to.name === 'listing'
-          ? Boolean(store.getters.getListing(to.params.listing))
-          : store.state.listing_summaries.length > 0
-
-    if (!isStored && to.name !== 'login' && to.name !== 'register') {
-        const { data } = await axios.get(`/api${to.path}`)
-        store.commit('addData', { route: to.name, data })
-    }
-
     if (window.auth) {
         const { data } = await axios.get(`/api/users/${window.user.id}/saved`)
         store.commit('assignSaved', data)
+    }
+
+    if (to.name !== 'login' && to.name !== 'register') {
+        const isStored = to.name === 'listing'
+              ? Boolean(store.getters.getListing(to.params.listing))
+              : store.state.listing_summaries.length > 0
+
+        if (!isStored) {
+            const { data } = await axios.get(`/api${to.path}`)
+            store.commit('addData', { route: to.name, data })
+        }
     }
 
     next()

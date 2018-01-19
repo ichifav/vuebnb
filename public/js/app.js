@@ -10267,48 +10267,53 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
 
 router.beforeEach(function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to, from, next) {
-        var isStored, _ref2, data, _ref3, _data;
+        var _ref2, data, isStored, _ref3, _data;
 
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        isStored = to.name === 'listing' ? Boolean(__WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].getters.getListing(to.params.listing)) : __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].state.listing_summaries.length > 0;
-
-                        if (!(!isStored && to.name !== 'login' && to.name !== 'register')) {
-                            _context.next = 7;
+                        if (!window.auth) {
+                            _context.next = 6;
                             break;
                         }
 
-                        _context.next = 4;
-                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api' + to.path);
+                        _context.next = 3;
+                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/users/' + window.user.id + '/saved');
 
-                    case 4:
+                    case 3:
                         _ref2 = _context.sent;
                         data = _ref2.data;
 
-                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('addData', { route: to.name, data: data });
+                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('assignSaved', data);
 
-                    case 7:
-                        if (!window.auth) {
-                            _context.next = 13;
+                    case 6:
+                        if (!(to.name !== 'login' && to.name !== 'register')) {
+                            _context.next = 14;
                             break;
                         }
 
-                        _context.next = 10;
-                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/users/' + window.user.id + '/saved');
+                        isStored = to.name === 'listing' ? Boolean(__WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].getters.getListing(to.params.listing)) : __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].state.listing_summaries.length > 0;
 
-                    case 10:
+                        if (isStored) {
+                            _context.next = 14;
+                            break;
+                        }
+
+                        _context.next = 11;
+                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api' + to.path);
+
+                    case 11:
                         _ref3 = _context.sent;
                         _data = _ref3.data;
 
-                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('assignSaved', _data);
+                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('addData', { route: to.name, data: _data });
 
-                    case 13:
+                    case 14:
 
                         next();
 
-                    case 14:
+                    case 15:
                     case 'end':
                         return _context.stop();
                 }
