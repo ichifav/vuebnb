@@ -12,7 +12,11 @@
                 </li>
 
                 <li>
-                    <a href="/login">Log in</a>
+                    <!-- <a href="/login">Log in</a> -->
+
+                    <router-link :to="{ name: 'login' }">
+                        Log In
+                    </router-link>
                 </li>
 
                 <li>
@@ -36,17 +40,17 @@
          FooterComponent: require('./Footer.vue')
      },
 
-    data() {
-      return {
-        csrf_token: window.csrf_token
-      }
-    },
+     data() {
+         return {
+             csrf_token: window.csrf_token
+         }
+     },
 
-    methods: {
-      logout() {
-        document.getElementById('logout').submit();
-      }
-    }
+     methods: {
+         logout() {
+             document.getElementById('logout').submit();
+         }
+     }
  }
 </script>
 

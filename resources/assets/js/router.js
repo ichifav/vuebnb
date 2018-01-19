@@ -30,6 +30,12 @@ const router = new VueRouter({
             component: require('./components/SavedPage'),
             name: 'saved',
         },
+
+        {
+            path: '/login',
+            component: require('./components/LoginPage'),
+            name: 'login',
+        },
     ],
 })
 
