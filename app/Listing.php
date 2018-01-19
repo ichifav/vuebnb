@@ -14,4 +14,9 @@ class Listing extends Model
         'amenity_breakfast' => 'boolean',
         'amenity_laptop' => 'boolean'
     ];
+
+    public function users() {
+        return $this->belongsToMany('\App\User', 'saved')
+            ->withTimestamps();
+    }
 }
