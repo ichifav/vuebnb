@@ -35,10 +35,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->validate([
+
+        $data = $request->validate([
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-        ]));
+        ]);
+
+        User::create([
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
 
         return redirect('/');
     }
