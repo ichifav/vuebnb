@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingApiController extends Controller
 {
     public function home()
     {
-        return $this->get_listing_summaries();
+        $data = $this->get_listing_summaries();
+        return $this->add_meta_data($data);
     }
 
     /**
@@ -55,7 +57,8 @@ class ListingApiController extends Controller
             $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
         }
 
-        return collect(['listing' => $listing]);
+        $data = collect(['listing' => $listing]);
+        return $this->add_meta_data($data);
     }
 
     /**
@@ -108,4 +111,11 @@ class ListingApiController extends Controller
 
         return collect(['listings' => $collection]);
     }
+
+    private function add_meta_data($collection)
+    {
+        return $collection->merge([
+            'auth' => Auth::check()
+        ]);
+  }
 }
