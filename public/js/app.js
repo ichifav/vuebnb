@@ -15843,6 +15843,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -15972,6 +15978,18 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("h1", [_vm._v("Vuebnb")])
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "links" }, [
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: { name: "saved" } } }, [
+                  _vm._v("Saved")
+                ])
+              ],
+              1
+            )
           ])
         ],
         1
