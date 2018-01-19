@@ -15849,11 +15849,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        FooterComponent: __webpack_require__(121)
+  components: {
+    FooterComponent: __webpack_require__(121)
+  },
+
+  data: function data() {
+    return {
+      csrf_token: window.csrf_token
+    };
+  },
+
+
+  methods: {
+    logout: function logout() {
+      document.getElementById('logout').submit();
     }
+  }
 });
 
 /***/ }),
@@ -15989,7 +16013,27 @@ var render = function() {
                 ])
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticStyle: { display: "hidden" },
+                  attrs: { action: "/logout", method: "POST", id: "logout" }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.csrf_token }
+                  })
+                ]
+              )
+            ])
           ])
         ],
         1
@@ -16002,7 +16046,16 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/login" } }, [_vm._v("Log in")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

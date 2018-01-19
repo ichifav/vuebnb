@@ -10,6 +10,17 @@
                 <li>
                     <router-link :to="{ name: 'saved' }">Saved</router-link>
                 </li>
+
+                <li>
+                    <a href="/login">Log in</a>
+                </li>
+
+                <li>
+                    <a @click='logout'>Log Out</a>
+                    <form style='display: hidden' action='/logout' method='POST' id='logout' >
+                        <input type='hidden' name='_token' :value='csrf_token'/>
+                    </form>
+                </li>
             </ul>
         </div>
 
@@ -24,6 +35,18 @@
      components: {
          FooterComponent: require('./Footer.vue')
      },
+
+    data() {
+      return {
+        csrf_token: window.csrf_token
+      }
+    },
+
+    methods: {
+      logout() {
+        document.getElementById('logout').submit();
+      }
+    }
  }
 </script>
 
