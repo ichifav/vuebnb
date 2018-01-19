@@ -17,16 +17,18 @@
                     </router-link>
                 </li>
 
+                <li v-if="!auth">
+                    <router-link :to="{ name: 'register' }">
+                        Register
+                    </router-link>
+                </li>
+
                 <li v-else>
                     <a @click='logout'>Log Out</a>
                     <form style='display: hidden' action='/logout' method='POST' id='logout' >
                         <input type='hidden' name='_token' :value='csrf_token'/>
                     </form>
                 </li>
-
-                <!-- <li> -->
-                <!-- <a @click="toggleAuth">Auth</a> -->
-                <!-- </li> -->
             </ul>
         </div>
 
@@ -53,10 +55,6 @@
          logout() {
              document.getElementById('logout').submit();
          },
-
-         toggleAuth() {
-             this.$store.commit('toggleAuth')
-         }
      }
  }
 </script>

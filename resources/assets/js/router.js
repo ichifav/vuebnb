@@ -33,8 +33,30 @@ const router = new VueRouter({
 
         {
             path: '/login',
-            component: require('./components/LoginPage'),
+            component: require('./components/Form'),
             name: 'login',
+            props: {
+                method: 'POST',
+                action: '/login',
+                buttonLabel: 'Log in',
+                message: "Don't have an account?",
+                routeLabel: 'Sign up',
+                link: 'register'
+            },
+        },
+
+        {
+            path: '/register',
+            component: require('./components/Form'),
+            name: 'register',
+            props: {
+                method: 'POST',
+                action: '/users',
+                buttonLabel: 'Sign up',
+                message: "Already have a Vuebnb account?",
+                routeLabel: 'Log in',
+                link: 'login'
+            },
         },
     ],
 })
@@ -44,7 +66,7 @@ router.beforeEach(async (to, from, next) => {
           ? Boolean(store.getters.getListing(to.params.listing))
           : store.state.listing_summaries.length > 0
 
-    if (!isStored && to.name !== 'login') {
+    if (!isStored && to.name !== 'login' && to.name !== 'register') {
         const { data } = await axios.get(`/api${to.path}`)
         store.commit('addData', { route: to.name, data })
     }

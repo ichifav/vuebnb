@@ -1,6 +1,7 @@
+
 <template>
     <div class="container">
-        <form role="form" method="POST" action="/login">
+        <form role="form" :method="method" :action="action">
             <input type="hidden" name="_token" :value="csrf_token">
 
             <div class="form-control">
@@ -14,13 +15,13 @@
             </div>
 
             <div class="form-control">
-                <button type="submit">Log in</button>
+                <button type="submit">{{ buttonLabel }}</button>
             </div>
 
             <p class="change-form">
-                Don't have an account?
-                <router-link :to="{ name: 'register' }">
-                    Sign up
+                {{ message }}
+                <router-link :to="{ name: link }">
+                    {{ routeLabel }}
                 </router-link>
             </p>
         </form>
@@ -33,7 +34,16 @@
          return {
              csrf_token: window.csrf_token
          }
-     }
+     },
+
+     props: [
+         'method',
+         'action',
+         'buttonLabel',
+         'message',
+         'routeLabel',
+         'link',
+     ]
  }
 </script>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Listing;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use App\Listing;
 */
 
 Auth::routes();
+
+Route::resource('users', 'UsersController')
+    ->only(['store']);
 
 foreach (['/', '/listings/{listing}'] as $url) {
     Route::view($url, 'app');

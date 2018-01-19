@@ -10240,8 +10240,28 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         name: 'saved'
     }, {
         path: '/login',
-        component: __webpack_require__(127),
-        name: 'login'
+        component: __webpack_require__(156),
+        name: 'login',
+        props: {
+            method: 'POST',
+            action: '/login',
+            buttonLabel: 'Log in',
+            message: "Don't have an account?",
+            routeLabel: 'Sign up',
+            link: 'register'
+        }
+    }, {
+        path: '/register',
+        component: __webpack_require__(156),
+        name: 'register',
+        props: {
+            method: 'POST',
+            action: '/users',
+            buttonLabel: 'Sign up',
+            message: "Already have a Vuebnb account?",
+            routeLabel: 'Log in',
+            link: 'login'
+        }
     }]
 });
 
@@ -10255,7 +10275,7 @@ router.beforeEach(function () {
                     case 0:
                         isStored = to.name === 'listing' ? Boolean(__WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].getters.getListing(to.params.listing)) : __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].state.listing_summaries.length > 0;
 
-                        if (!(!isStored && to.name !== 'login')) {
+                        if (!(!isStored && to.name !== 'login' && to.name !== 'register')) {
                             _context.next = 7;
                             break;
                         }
@@ -17125,175 +17145,10 @@ if (false) {
 }
 
 /***/ }),
-/* 127 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(128)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(129)
-/* template */
-var __vue_template__ = __webpack_require__(130)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-44ff1d71"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/LoginPage.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-44ff1d71", Component.options)
-  } else {
-    hotAPI.reload("data-v-44ff1d71", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 128 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 129 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            csrf_token: window.csrf_token
-        };
-    }
-});
-
-/***/ }),
-/* 130 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "login-container", attrs: { id: "login" } }, [
-    _c("form", { attrs: { role: "form", method: "POST", action: "/login" } }, [
-      _c("input", {
-        attrs: { type: "hidden", name: "_token" },
-        domProps: { value: _vm.csrf_token }
-      }),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-control" }, [
-      _c("input", {
-        attrs: {
-          id: "email",
-          type: "email",
-          name: "email",
-          placeholder: "Email Address",
-          required: "",
-          autofocus: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-control" }, [
-      _c("input", {
-        attrs: {
-          id: "password",
-          type: "password",
-          name: "password",
-          placeholder: "Password",
-          required: ""
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-control" }, [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Log in")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-44ff1d71", module.exports)
-  }
-}
-
-/***/ }),
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
 /* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17394,6 +17249,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -17411,9 +17268,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         logout: function logout() {
             document.getElementById('logout').submit();
-        },
-        toggleAuth: function toggleAuth() {
-            this.$store.commit('toggleAuth');
         }
     }
 });
@@ -17565,6 +17419,18 @@ var render = function() {
                   ],
                   1
                 )
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.auth
+              ? _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "register" } } }, [
+                      _vm._v("\n                    Register\n                ")
+                    ])
+                  ],
+                  1
+                )
               : _c("li", [
                   _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
                   _vm._v(" "),
@@ -17601,6 +17467,218 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-8142f38c", module.exports)
+  }
+}
+
+/***/ }),
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(157)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(158)
+/* template */
+var __vue_template__ = __webpack_require__(159)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-05b2ab7b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Form.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-05b2ab7b", Component.options)
+  } else {
+    hotAPI.reload("data-v-05b2ab7b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 158 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            csrf_token: window.csrf_token
+        };
+    },
+
+
+    props: ['method', 'action', 'buttonLabel', 'message', 'routeLabel', 'link']
+});
+
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "form",
+      { attrs: { role: "form", method: _vm.method, action: _vm.action } },
+      [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf_token }
+        }),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-control" }, [
+          _c("button", { attrs: { type: "submit" } }, [
+            _vm._v(_vm._s(_vm.buttonLabel))
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          { staticClass: "change-form" },
+          [
+            _vm._v("\n            " + _vm._s(_vm.message) + "\n            "),
+            _c("router-link", { attrs: { to: { name: _vm.link } } }, [
+              _vm._v(
+                "\n                " + _vm._s(_vm.routeLabel) + "\n            "
+              )
+            ])
+          ],
+          1
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control" }, [
+      _c("input", {
+        attrs: {
+          id: "email",
+          type: "email",
+          name: "email",
+          placeholder: "Email Address",
+          required: "",
+          autofocus: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control" }, [
+      _c("input", {
+        attrs: {
+          id: "password",
+          type: "password",
+          name: "password",
+          placeholder: "Password",
+          required: ""
+        }
+      })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-05b2ab7b", module.exports)
   }
 }
 
