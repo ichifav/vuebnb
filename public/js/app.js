@@ -10188,7 +10188,7 @@ router.beforeEach(function () {
                     case 0:
                         isStored = to.name === 'listing' ? Boolean(__WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].getters.getListing(to.params.listing)) : __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].state.listing_summaries.length > 0;
 
-                        if (isStored) {
+                        if (!(!isStored && to.name !== 'login')) {
                             _context.next = 7;
                             break;
                         }

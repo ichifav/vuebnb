@@ -38,8 +38,9 @@ use App\Listing;
 //     return view('app');
 // });
 
+Auth::routes();
 
-foreach (['/', '/listings/{listing}'] as $url) {
+foreach (['/', '/login', '/listings/{listing}'] as $url) {
     Route::get($url, function () {
         return view('app');
     });
@@ -48,9 +49,3 @@ foreach (['/', '/listings/{listing}'] as $url) {
 Route::get('/saved', function () {
     return view('app');
 })->middleware('auth');
-
-Route::get('/home', function () {
-    return view('home');
-});
-
-Auth::routes();

@@ -44,7 +44,7 @@ router.beforeEach(async (to, from, next) => {
           ? Boolean(store.getters.getListing(to.params.listing))
           : store.state.listing_summaries.length > 0
 
-    if (!isStored) {
+    if (!isStored && to.name !== 'login') {
         const { data } = await axios.get(`/api${to.path}`)
         store.commit('addData', { route: to.name, data })
     }
