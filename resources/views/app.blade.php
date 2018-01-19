@@ -11,8 +11,18 @@
     <body>
         <div id="app"></div>
 
-        <script type='text/javascript'>
+        @php
+            if (auth()->check()) {
+                $user = auth()->user()->toJson();
+            } else {
+                $user = "{}";
+            }
+        @endphp
+
+        <script type='text/javascript''>
          window.csrf_token = '{{ csrf_token() }}'
+         window.user = {!! $user !!}
+         window.auth = Boolean(window.user.id)
         </script>
 
         <script src="{{ asset('js/app.js') }}"></script>

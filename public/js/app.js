@@ -9163,7 +9163,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
     mutations: {
         toggleSaved: function toggleSaved(state, id) {
-            if (state.auth) {
+            if (window.auth) {
                 var index = state.saved.findIndex(function (saved) {
                     return saved === id;
                 });
@@ -9178,8 +9178,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
         addData: function addData(state, _ref) {
             var route = _ref.route,
                 data = _ref.data;
-
-            console.log(data);
 
             if (data.auth) {
                 state.auth = data.auth;
@@ -10217,9 +10215,15 @@ router.beforeEach(function () {
 
                     case 7:
 
+                        if (from.name === 'login') {
+                            // for (id of data.saved) {
+                            //     store.commit('toggleSaved', id)
+                            // }
+                        }
+
                         next();
 
-                    case 8:
+                    case 9:
                     case 'end':
                         return _context.stop();
                 }
@@ -17333,7 +17337,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            csrf_token: window.csrf_token
+            csrf_token: window.csrf_token,
+            auth: window.auth
         };
     },
 
@@ -17473,7 +17478,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("ul", { staticClass: "links" }, [
-            _vm.$store.state.auth
+            _vm.auth
               ? _c(
                   "li",
                   [
@@ -17485,7 +17490,7 @@ var render = function() {
                 )
               : _vm._e(),
             _vm._v(" "),
-            !_vm.$store.state.auth
+            !_vm.auth
               ? _c(
                   "li",
                   [
@@ -17511,11 +17516,7 @@ var render = function() {
                       })
                     ]
                   )
-                ]),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { on: { click: _vm.toggleAuth } }, [_vm._v("Auth")])
-            ])
+                ])
           ])
         ],
         1

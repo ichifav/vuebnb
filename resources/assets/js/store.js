@@ -22,7 +22,7 @@ export default new Vuex.Store({
 
     mutations: {
         toggleSaved(state, id) {
-            if (state.auth) {
+            if (window.auth) {
                 const index = state.saved.findIndex(saved => saved === id)
 
                 if (index === -1) {
@@ -34,8 +34,6 @@ export default new Vuex.Store({
         },
 
         addData(state, { route, data }) {
-            console.log(data)
-
             if (data.auth) {
                 state.auth = data.auth
             }

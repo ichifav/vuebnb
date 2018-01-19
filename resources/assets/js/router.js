@@ -49,6 +49,12 @@ router.beforeEach(async (to, from, next) => {
         store.commit('addData', { route: to.name, data })
     }
 
+    if (from.name === 'login') {
+        // for (id of data.saved) {
+        //     store.commit('toggleSaved', id)
+        // }
+    }
+
     next()
 })
 

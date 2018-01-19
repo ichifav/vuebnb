@@ -114,8 +114,11 @@ class ListingApiController extends Controller
 
     private function add_meta_data($collection)
     {
+        $auth = Auth::check();
+
         return $collection->merge([
-            'auth' => Auth::check()
+            'auth' => $auth,
+            'saved' => $auth ? Auth::user()->saved_listings->pluck('id') : []
         ]);
   }
 }

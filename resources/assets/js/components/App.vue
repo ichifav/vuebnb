@@ -7,11 +7,11 @@
             </router-link>
 
             <ul class="links">
-                <li v-if="$store.state.auth">
+                <li v-if="auth">
                     <router-link :to="{ name: 'saved' }">Saved</router-link>
                 </li>
 
-                <li v-if="!$store.state.auth">
+                <li v-if="!auth">
                     <router-link :to="{ name: 'login' }">
                         Log In
                     </router-link>
@@ -24,9 +24,9 @@
                     </form>
                 </li>
 
-                <li>
-                    <a @click="toggleAuth">Auth</a>
-                </li>
+                <!-- <li> -->
+                <!-- <a @click="toggleAuth">Auth</a> -->
+                <!-- </li> -->
             </ul>
         </div>
 
@@ -44,7 +44,8 @@
 
      data() {
          return {
-             csrf_token: window.csrf_token
+             csrf_token: window.csrf_token,
+             auth: window.auth,
          }
      },
 
