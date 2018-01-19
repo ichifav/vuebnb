@@ -3,10 +3,13 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+import router from './router'
+
+import axios from 'axios'
+
+
 export default new Vuex.Store({
     state: {
-        auth: false,
-
         saved: [],
 
         listing_summaries: [],
@@ -21,6 +24,10 @@ export default new Vuex.Store({
     },
 
     mutations: {
+        assignSaved(state, saved) {
+            state.saved = saved
+        },
+
         toggleSaved(state, id) {
             if (window.auth) {
                 const index = state.saved.findIndex(saved => saved === id)
@@ -30,6 +37,9 @@ export default new Vuex.Store({
                 } else {
                     state.saved.splice(index, 1)
                 }
+
+            } else {
+                router.push('/login')
             }
         },
 
@@ -44,9 +54,21 @@ export default new Vuex.Store({
                 state.listing_summaries = data.listings
             }
         },
+    },
 
-        toggleAuth(state) {
-            state.auth = !state.auth
-        },
+    actions: {
+        async toggleSaved(store, listing_id) {
+            const before = store.state.saved.length
+
+            store.commit('toggleSaved', listing_id)
+
+            const after = store.state.saved.length
+
+            if (before < after) {
+                axios.post(`/api/users/${window.user.id}/saved/${listing_id}`)
+            } else if (before > after) {
+                axios.delete(`/api/users/${window.user.id}/saved/${listing_id}`)
+            }
+        }
     }
 })

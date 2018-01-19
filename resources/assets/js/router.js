@@ -49,10 +49,9 @@ router.beforeEach(async (to, from, next) => {
         store.commit('addData', { route: to.name, data })
     }
 
-    if (from.name === 'login') {
-        // for (id of data.saved) {
-        //     store.commit('toggleSaved', id)
-        // }
+    if (window.auth) {
+        const { data } = await axios.get(`/api/users/${window.user.id}/saved`)
+        store.commit('assignSaved', data)
     }
 
     next()

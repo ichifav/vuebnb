@@ -9133,17 +9133,28 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_axios__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
+__WEBPACK_IMPORTED_MODULE_1_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */]);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
     state: {
-        auth: false,
-
         saved: [],
 
         listing_summaries: [],
@@ -9162,6 +9173,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
     },
 
     mutations: {
+        assignSaved: function assignSaved(state, saved) {
+            state.saved = saved;
+        },
         toggleSaved: function toggleSaved(state, id) {
             if (window.auth) {
                 var index = state.saved.findIndex(function (saved) {
@@ -9173,6 +9187,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 } else {
                     state.saved.splice(index, 1);
                 }
+            } else {
+                __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */].push('/login');
             }
         },
         addData: function addData(state, _ref) {
@@ -9188,10 +9204,45 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
             } else {
                 state.listing_summaries = data.listings;
             }
-        },
-        toggleAuth: function toggleAuth(state) {
-            state.auth = !state.auth;
         }
+    },
+
+    actions: {
+        toggleSaved: function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(store, listing_id) {
+                var before, after;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                before = store.state.saved.length;
+
+
+                                store.commit('toggleSaved', listing_id);
+
+                                after = store.state.saved.length;
+
+
+                                if (before < after) {
+                                    __WEBPACK_IMPORTED_MODULE_4_axios___default.a.post('/api/users/' + window.user.id + '/saved/' + listing_id);
+                                } else if (before > after) {
+                                    __WEBPACK_IMPORTED_MODULE_4_axios___default.a.delete('/api/users/' + window.user.id + '/saved/' + listing_id);
+                                }
+
+                            case 4:
+                            case 'end':
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function toggleSaved(_x, _x2) {
+                return _ref2.apply(this, arguments);
+            }
+
+            return toggleSaved;
+        }()
     }
 }));
 
@@ -10191,7 +10242,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
 
 router.beforeEach(function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(to, from, next) {
-        var isStored, _ref2, data;
+        var isStored, _ref2, data, _ref3, _data;
 
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
@@ -10214,16 +10265,25 @@ router.beforeEach(function () {
                         __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('addData', { route: to.name, data: data });
 
                     case 7:
-
-                        if (from.name === 'login') {
-                            // for (id of data.saved) {
-                            //     store.commit('toggleSaved', id)
-                            // }
+                        if (!window.auth) {
+                            _context.next = 13;
+                            break;
                         }
+
+                        _context.next = 10;
+                        return __WEBPACK_IMPORTED_MODULE_3_axios___default.a.get('/api/users/' + window.user.id + '/saved');
+
+                    case 10:
+                        _ref3 = _context.sent;
+                        _data = _ref3.data;
+
+                        __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */].commit('assignSaved', _data);
+
+                    case 13:
 
                         next();
 
-                    case 9:
+                    case 14:
                     case 'end':
                         return _context.stop();
                 }
@@ -15798,7 +15858,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         toggleSaved: function toggleSaved() {
-            this.$store.commit('toggleSaved', this.id);
+            this.$store.dispatch('toggleSaved', this.id);
         }
     }
 });

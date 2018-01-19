@@ -1,6 +1,7 @@
 <?php
 
 use App\Listing;
+use App\User;
 use Illuminate\Http\Request;
 
 /*
@@ -20,3 +21,8 @@ Route::get('/saved', 'ListingApiController@home');
 
 Route::resource('listings', 'ListingApiController')
     ->only(['show']);
+
+Route::get('/users/{user}/saved', 'UsersApiController@saved');
+
+Route::post('/users/{user}/saved/{listing}', 'UsersApiController@save');
+Route::delete('/users/{user}/saved/{listing}', 'UsersApiController@unsave');
