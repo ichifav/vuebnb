@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        saved: [],
+        saved: [1,2,3,4,5,6,7],
 
         listing_summaries: [],
 
@@ -15,7 +15,7 @@ export default new Vuex.Store({
     getters: {
         getListing(state) {
             return id => state.listings.find(listing => id == listing.id)
-        }
+        },
     },
 
     mutations: {

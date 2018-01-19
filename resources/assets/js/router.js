@@ -24,6 +24,12 @@ const router = new VueRouter({
             component: require('./components/ListingPage'),
             name: 'listing',
         },
+
+        {
+            path: '/saved',
+            component: require('./components/SavedPage'),
+            name: 'saved',
+        },
     ],
 })
 

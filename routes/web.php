@@ -13,7 +13,14 @@ use App\Listing;
 |
 */
 
-Route::get('/', 'ListingController@home');
+// Route::get('/', 'ListingController@home');
 
-Route::resource('listings', 'ListingController')
-    ->only(['show']);
+// Route::get('/saved', 'ListingController@home');
+
+// Route::resource('listings', 'ListingController')
+//     ->only(['show']);
+
+Route::get('/{any}', function () {
+    return view('app');
+})
+->where('any', '.*');
