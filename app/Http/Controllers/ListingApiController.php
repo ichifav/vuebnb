@@ -10,8 +10,7 @@ class ListingApiController extends Controller
 {
     public function home()
     {
-        $data = $this->get_listing_summaries();
-        return $this->add_meta_data($data);
+        return $this->get_listing_summaries();
     }
 
     /**
@@ -57,8 +56,7 @@ class ListingApiController extends Controller
             $listing["image_{$i}"] = asset("images/{$listing->id}/Image_{$i}.jpg");
         }
 
-        $data = collect(['listing' => $listing]);
-        return $this->add_meta_data($data);
+        return collect(['listing' => $listing]);
     }
 
     /**
@@ -111,14 +109,4 @@ class ListingApiController extends Controller
 
         return collect(['listings' => $collection]);
     }
-
-    private function add_meta_data($collection)
-    {
-        $auth = Auth::check();
-
-        return $collection->merge([
-            'auth' => $auth,
-            'saved' => $auth ? Auth::user()->saved_listings->pluck('id') : []
-        ]);
-  }
 }

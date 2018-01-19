@@ -13,39 +13,11 @@ use App\Listing;
 |
 */
 
-// Route::get('/', 'ListingController@home');
-
-// Route::get('/saved', 'ListingController@home');
-
-// Route::resource('listings', 'ListingController')
-//     ->only(['show']);
-
-// Route::get('/{any}', function () {
-//     return view('app');
-// })
-// ->where('any', '.*');
-
-
-// Route::get('/', function () {
-//     return view('app');
-// });
-
-// Route::get('/listings/{listing}', function (Listing $listing) {
-//     return view('app');
-// });
-
-// Route::get('/saved', function () {
-//     return view('app');
-// });
-
 Auth::routes();
 
 foreach (['/', '/listings/{listing}'] as $url) {
-    Route::get($url, function () {
-        return view('app');
-    });
+    Route::view($url, 'app');
 }
 
-Route::get('/saved', function () {
-    return view('app');
-})->middleware('auth');
+Route::view('/saved', 'app')
+    ->middleware('auth');
