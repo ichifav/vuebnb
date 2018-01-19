@@ -9190,6 +9190,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
             } else {
                 state.listing_summaries = data.listings;
             }
+        },
+        toggleAuth: function toggleAuth(state) {
+            state.auth = !state.auth;
         }
     }
 }));
@@ -17320,6 +17323,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -17336,6 +17341,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         logout: function logout() {
             document.getElementById('logout').submit();
+        },
+        toggleAuth: function toggleAuth() {
+            this.$store.commit('toggleAuth');
         }
     }
 });
@@ -17465,42 +17473,48 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("ul", { staticClass: "links" }, [
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: { name: "saved" } } }, [
-                  _vm._v("Saved")
-                ])
-              ],
-              1
-            ),
+            _vm.$store.state.auth
+              ? _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "saved" } } }, [
+                      _vm._v("Saved")
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: { name: "login" } } }, [
-                  _vm._v("\n                    Log In\n                ")
-                ])
-              ],
-              1
-            ),
+            !_vm.$store.state.auth
+              ? _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "login" } } }, [
+                      _vm._v("\n                    Log In\n                ")
+                    ])
+                  ],
+                  1
+                )
+              : _c("li", [
+                  _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticStyle: { display: "hidden" },
+                      attrs: { action: "/logout", method: "POST", id: "logout" }
+                    },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_token" },
+                        domProps: { value: _vm.csrf_token }
+                      })
+                    ]
+                  )
+                ]),
             _vm._v(" "),
             _c("li", [
-              _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticStyle: { display: "hidden" },
-                  attrs: { action: "/logout", method: "POST", id: "logout" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_token" },
-                    domProps: { value: _vm.csrf_token }
-                  })
-                ]
-              )
+              _c("a", { on: { click: _vm.toggleAuth } }, [_vm._v("Auth")])
             ])
           ])
         ],

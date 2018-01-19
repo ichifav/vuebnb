@@ -46,5 +46,9 @@ export default new Vuex.Store({
                 state.listing_summaries = data.listings
             }
         },
+
+        toggleAuth(state) {
+            state.auth = !state.auth
+        },
     }
 })

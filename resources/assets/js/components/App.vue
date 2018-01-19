@@ -7,23 +7,25 @@
             </router-link>
 
             <ul class="links">
-                <li>
+                <li v-if="$store.state.auth">
                     <router-link :to="{ name: 'saved' }">Saved</router-link>
                 </li>
 
-                <li>
-                    <!-- <a href="/login">Log in</a> -->
-
+                <li v-if="!$store.state.auth">
                     <router-link :to="{ name: 'login' }">
                         Log In
                     </router-link>
                 </li>
 
-                <li>
+                <li v-else>
                     <a @click='logout'>Log Out</a>
                     <form style='display: hidden' action='/logout' method='POST' id='logout' >
                         <input type='hidden' name='_token' :value='csrf_token'/>
                     </form>
+                </li>
+
+                <li>
+                    <a @click="toggleAuth">Auth</a>
                 </li>
             </ul>
         </div>
@@ -49,6 +51,10 @@
      methods: {
          logout() {
              document.getElementById('logout').submit();
+         },
+
+         toggleAuth() {
+             this.$store.commit('toggleAuth')
          }
      }
  }
